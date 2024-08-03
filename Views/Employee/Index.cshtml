@@ -1,0 +1,98 @@
+﻿@model IEnumerable<EmployeeManagement.Models.Employee>
+
+@{
+    ViewBag.Title = "Employee List";
+}
+
+<h2>Employee List</h2>
+
+<!-- Container for the Add New Employee button -->
+<div class="button-container">
+    <a href="@Url.Action("Create")" class="btn btn-primary">Add New Employee</a>
+</div>
+
+<!-- Styled table -->
+<table class="styled-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Date of Birth</th>
+            <th>Position</th>
+            <th>Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model)
+        {
+            <tr>
+                <td>@employee.Id</td>
+                <td>@employee.Name</td>
+                <td>@employee.DateOfBirth.ToShortDateString()</td>
+                <td>@employee.Position</td>
+                <td>@employee.Address</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- CSS (if not in a separate file) -->
+<style>
+    /* Container for the Add New Employee button */
+    .button-container {
+        text-align: right;
+        margin-bottom: 20px; /* Space between the button and the table */
+    }
+
+    /* Button styling */
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+    .styled-table {
+        width: 100%;
+        border-collapse: collapse;
+        border-radius: 8px;
+        overflow: hidden;
+        background-color: #f9f9f9; 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+        .styled-table thead {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .styled-table th, .styled-table td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        .styled-table tbody tr {
+            border-bottom: 1px solid #ddd; 
+        }
+
+            .styled-table tbody tr:nth-of-type(even) {
+                background-color: #f2f2f2;
+            }
+
+            .styled-table tbody tr:hover {
+                background-color: #e9ecef;
+            }
+
+        .styled-table th {
+            font-weight: bold;
+        }
+</style>
